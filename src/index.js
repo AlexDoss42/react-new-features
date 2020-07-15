@@ -1,12 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
 import * as serviceWorker from './serviceWorker';
 
+const App = () => {
+  return (
+    <div>
+      <p>THe Current coutn is 0</p>
+    </div>
+  )
+};
+
+
 ReactDOM.render(
-  <div>
-    My new content
-  </div>,
+  <App/>,
   document.getElementById('root')
 );
 
