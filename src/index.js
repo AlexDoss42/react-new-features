@@ -19,6 +19,13 @@ const NoteApp = () => {
   return (
     <div>
       <h1>Notes</h1>
+      {
+        notes.map((note) => (
+          <div key={note.title}>
+            <h3>{note.title}</h3>
+          </div>
+        ))
+      }
       <p>Add note</p>
       <form onSubmit={addNote}>
         <input value={title} onChange={(e) => setTitle(e.target.value)} />
