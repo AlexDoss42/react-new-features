@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 
-const AddNoteForm = ({ title, setTitle, dispatch }) => {
+const AddNoteForm = ({ dispatch }) => {
 
   const [body, setBody] = useState('');
+  const [title, setTitle] = useState('');
   
   const addNote = (e) => {
     e.preventDefault();
