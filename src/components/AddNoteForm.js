@@ -11,13 +11,6 @@ const AddNoteForm = ({ title, setTitle, dispatch }) => {
       title,
       body
     });
-    // setNotes([
-    //   ...notes,
-    //   {
-    //     title,
-    //     body
-    //   }
-    // ]);
     setTitle('');
     setBody('');
   };

@@ -5,7 +5,6 @@ import NoteList from './NoteList';
 import AddNoteForm from './AddNoteForm';
 
 const NoteApp = () => {
-  // const [notes, setNotes] = useState([]);
   const [notes, dispatch] = useReducer(notesReducer, []);
   const [title, setTitle] = useState('');
   
@@ -14,7 +13,6 @@ const NoteApp = () => {
     const notes = JSON.parse(localStorage.getItem('notes'));
     if(notes) {
       dispatch({ type: 'POPULATE_NOTES', notes })
-      // setNotes(notesData);
     }
   }, []);
 
@@ -25,7 +23,6 @@ const NoteApp = () => {
   
 
   const removeNote = (title) => {
-    // setNotes(notes.filter((note) => note.title !== title));
     dispatch({
       type: 'REMOVE_NOTE',
       title
