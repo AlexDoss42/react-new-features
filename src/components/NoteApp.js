@@ -18,8 +18,6 @@ const NoteApp = () => {
     localStorage.setItem('notes', JSON.stringify(notes));
   }, [notes]);
 
-  
-
   return (
     <NotesContext.Provider value={{notes, dispatch}}>
       <h1>Notes</h1>
