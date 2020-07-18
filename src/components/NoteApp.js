@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useReducer } from 'react';
 
-import notesReducer from './reducers/notes';
-import NoteList from './components/NoteList';
+import notesReducer from './../reducers/notes';
+import NoteList from './NoteList';
 
 const NoteApp = () => {
   // const [notes, setNotes] = useState([]);
