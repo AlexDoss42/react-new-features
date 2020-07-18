@@ -1,16 +1,27 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useReducer } from 'react';
 import ReactDOM from 'react-dom';
 import * as serviceWorker from './serviceWorker';
 
+const notesReducer = (state, action) => {
+  switch (action.type) {
+    case 'POPULATE_NOTES':
+      return action.notes
+    default: 
+      return state
+  }
+};
+
 const NoteApp = () => {
-  const [notes, setNotes] = useState([]);
+  // const [notes, setNotes] = useState([]);
+  const [notes, dispatch] = useReducer(notesReducer, []);
   const [title, setTitle] = useState('');
   const [body, setBody] = useState('');
 
   useEffect(() => {
-    const notesData = JSON.parse(localStorage.getItem('notes'));
-    if(notesData) {
-      setNotes(notesData);
+    const notes = JSON.parse(localStorage.getItem('notes'));
+    if(notes) {
+      dispatch({ type: 'POPULATE_NOTES', notes })
+      // setNotes(notesData);
     }
   }, []);
 
@@ -20,17 +31,17 @@ const NoteApp = () => {
 
   const addNote = (e) => {
     e.preventDefault();
-    setNotes([
-      ...notes,
-      {
-        title,
-        body
-      }
-    ]);
+    // setNotes([
+    //   ...notes,
+    //   {
+    //     title,
+    //     body
+    //   }
+    // ]);
   };
 
   const removeNote = (title) => {
-    setNotes(notes.filter((note) => note.title !== title));
+    // setNotes(notes.filter((note) => note.title !== title));
   };
 
   return (
