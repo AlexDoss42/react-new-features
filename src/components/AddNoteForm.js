@@ -1,6 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-const AddNoteForm = ({ title, setTitle, body, setBody, addNote }) => {
+const AddNoteForm = ({ title, setTitle, dispatch }) => {
+
+  const [body, setBody] = useState('');
+  
+  const addNote = (e) => {
+    e.preventDefault();
+    dispatch({
+      type: 'ADD_NOTE',
+      title,
+      body
+    });
+    // setNotes([
+    //   ...notes,
+    //   {
+    //     title,
+    //     body
+    //   }
+    // ]);
+    setTitle('');
+    setBody('');
+  };
   return (
     <div>
       <p>Add note</p>

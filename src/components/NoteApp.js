@@ -8,7 +8,7 @@ const NoteApp = () => {
   // const [notes, setNotes] = useState([]);
   const [notes, dispatch] = useReducer(notesReducer, []);
   const [title, setTitle] = useState('');
-  const [body, setBody] = useState('');
+  
 
   useEffect(() => {
     const notes = JSON.parse(localStorage.getItem('notes'));
@@ -22,23 +22,7 @@ const NoteApp = () => {
     localStorage.setItem('notes', JSON.stringify(notes));
   }, [notes]);
 
-  const addNote = (e) => {
-    e.preventDefault();
-    dispatch({
-      type: 'ADD_NOTE',
-      title,
-      body
-    });
-    // setNotes([
-    //   ...notes,
-    //   {
-    //     title,
-    //     body
-    //   }
-    // ]);
-    setTitle('');
-    setBody('');
-  };
+  
 
   const removeNote = (title) => {
     // setNotes(notes.filter((note) => note.title !== title));
@@ -55,9 +39,7 @@ const NoteApp = () => {
       <AddNoteForm
         title={title}
         setTitle={setTitle}
-        setBody={setBody}
-        body={body}
-        addNote={addNote}
+        dispatch={dispatch}
       />
     </div>
   );
