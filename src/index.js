@@ -38,11 +38,7 @@ const NoteApp = () => {
       <h1>Notes</h1>
       {
         notes.map((note) => (
-          <div key={note.title}>
-            <h3>{note.title}</h3>
-            <p>{note.body}</p>
-            <button onClick={() => removeNote(note.title)}>x</button>
-          </div>
+          <Note key={note.title} note={note} removeNote={removeNote} />
         ))
       }
       <p>Add note</p>
@@ -55,42 +51,16 @@ const NoteApp = () => {
   );
 };
 
-const App = (props) => {
-  const [count, setCount] = useState(props.count);
-  const [text, setText] = useState('');
-
-  useEffect(() => {
-    console.log('This should only run once');
-  }, []);
-
-  useEffect(() => {
-    console.log('useEffect ran');
-    document.title = count;
-  }, [count]);
-
-  const increment = () => {
-    setCount(count + 1);
-  };
-
-  const decrement = () => {
-    setCount(count - 1);
-  };
-
-  const reset = () => {
-    setCount(0);
-  };
-
-  return (
+const Note = (props) => {
+  const { note, removeNote} = props;
+  return(
     <div>
-      <p>The current {text || 'count'} is {count}</p>
-      <button onClick={increment}>+1</button>
-      <button onClick={decrement}>-1</button>
-      <button onClick={reset}>Reset</button>
-      <input value={text} onChange={(e) => {setText(e.target.value)}} />
+      <h3>{note.title}</h3>
+      <p>{note.body}</p>
+      <button onClick={() => removeNote(note.title)}>x</button>
     </div>
   )
-};
-
+}
 
 ReactDOM.render(
   // <App count={0}/>,
